@@ -51,4 +51,6 @@ friends making jokes, setting challenges, and engaging in playful discussions
 about the game and movies they are experiencing together.
 ```
 
+If anyone comes up with some better prompts I would love to see them.
+
 This project was created using GPT.
