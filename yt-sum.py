@@ -4,6 +4,8 @@ import os
 import glob
 import tiktoken
 import textwrap
+import uuid
+from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from openai import OpenAI
 
 # ========== Utility: Wrap and format console output ==========
@@ -15,42 +17,57 @@ def print_wrapped(title, text, width=80):
         print(wrapped)
     print("\n")
 
-
 # ========== Step 1: Ask user for YouTube URL ==========
 def get_youtube_url():
     return input("📺 Enter the YouTube URL: ").strip()
 
-# ========== Step 2: Get video title using yt-dlp ==========
-def get_video_title(url):
+# ========== Step 2: Clean YouTube URL ==========
+def clean_youtube_url(url):
+    """Remove playlist and other extraneous parameters from a YouTube URL."""
+    parsed = urlparse(url)
+    qs = parse_qs(parsed.query)
+    cleaned_qs = {'v': qs['v']} if 'v' in qs else {}
+    cleaned_url = parsed._replace(query=urlencode(cleaned_qs, doseq=True))
+    return urlunparse(cleaned_url)
+
+# ========== Step 3: Get video title and ID in one call ==========
+def get_video_info(url):
     result = subprocess.run(
-        ["yt-dlp", "--get-title", url],
+        ["yt-dlp", "--no-playlist", "--get-id", "--get-title", url],
         capture_output=True,
         text=True
     )
-    return result.stdout.strip() if result.returncode == 0 else "Untitled Video"
+    if result.returncode != 0:
+        return "Untitled Video", "unknown_id"
+    lines = result.stdout.strip().splitlines()
+    return lines[1], lines[0]  # title, video_id
 
-# ========== Step 3: Download subtitles ==========
-def download_subtitles(url):
+# ========== Step 4: Download subtitles ==========
+def download_subtitles(url, video_id):
+    output_base = f"video_{video_id}_{uuid.uuid4().hex[:6]}"
     command = [
         "yt-dlp",
+        "--no-playlist",
         "--write-auto-sub",
         "--convert-subs", "srt",
         "--skip-download",
+        "-o", f"{output_base}.%(ext)s",
         url
     ]
     subprocess.run(command, check=True)
+    return output_base
 
-# ========== Step 4: Find latest .srt file ==========
-def find_srt_file():
-    files = glob.glob("*.en.srt") + glob.glob("*.srt")
-    return max(files, key=os.path.getctime) if files else None
+# ========== Step 5: Find latest .srt file ==========
+def find_srt_file(base):
+    files = glob.glob(f"{base}*.srt")
+    return files[0] if files else None
 
-# ========== Step 5: Clean subtitle file ==========
+# ========== Step 6: Clean subtitle file ==========
 def clean_subtitles(filename):
     bad_words = ['-->', '</c>']
     prefix = re.compile(r"^>> ")
-
     new_lines = []
+
     with open(filename, encoding='utf-8') as f:
         for line in f:
             line = line.strip()
@@ -67,7 +84,7 @@ def clean_subtitles(filename):
 
     return '\n'.join(new_lines)
 
-# ========== Step 6: Split into large GPT-safe chunks ==========
+# ========== Step 7: Split into GPT-safe chunks ==========
 def split_text_into_chunks(text, max_tokens=22000):
     enc = tiktoken.encoding_for_model("gpt-4o")
     lines = text.split('\n')
@@ -91,7 +108,7 @@ def split_text_into_chunks(text, max_tokens=22000):
 
     return chunks
 
-# ========== Step 7: Summarize each chunk interactively ==========
+# ========== Step 8: Summarize each chunk ==========
 def summarize_text(text, video_title):
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -109,7 +126,7 @@ def summarize_text(text, video_title):
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics."
+                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style."
                 },
                 {
                     "role": "user",
@@ -130,14 +147,15 @@ def summarize_text(text, video_title):
                 print("\n🛑 Stopping early.\n")
                 break
 
-
-# ========== Step 8: Main entry point ==========
+# ========== Step 9: Main entry ==========
 if __name__ == "__main__":
-    url = get_youtube_url()
-    title = get_video_title(url)
+    raw_url = get_youtube_url()
+    cleaned_url = clean_youtube_url(raw_url)
+    title, video_id = get_video_info(cleaned_url)
+
     print(f"\n📥 Downloading subtitles for: {title}\n")
-    download_subtitles(url)
-    srt_file = find_srt_file()
+    output_base = download_subtitles(cleaned_url, video_id)
+    srt_file = find_srt_file(output_base)
 
     if not srt_file:
         print("❌ No subtitle file found.")
