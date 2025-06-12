@@ -1,35 +1,10 @@
 # AI YouTube Video Summarizer
 
-A Python script that uses `yt-dlp` and OpenAI's GPT to summarize YouTube videos by analyzing their subtitles and top comments.
-
----
-
-## Features
-
-- Downloads and cleans auto-generated YouTube subtitles using `yt-dlp`
-- Summarizes content with GPT-4 based on video title and channel context
-- Breaks long transcripts into manageable chunks for better summarization
-- Optionally analyzes top user comments for sentiment and themes
-- Simple terminal interface — just paste the video URL when prompted
-
----
-
-## Requirements
-
-- [Python 3.8+](https://www.python.org/downloads/)
-- [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) installed and accessible via terminal
-- [OpenAI API key](https://platform.openai.com/account/api-keys) set as an environment variable:  
-  `OPENAI_API_KEY`
-
-### Install Dependencies:
+A Python script that uses yt-dlp, GPT and youtube-comment-downloader to summarize YouTube videos by analyzing their subtitles and comments.
 
 ```bash
 pip install openai tiktoken yt-dlp youtube-comment-downloader
 ```
-
----
-
-## Usage
 
 Run the script with:
 
@@ -37,34 +12,13 @@ Run the script with:
 python yt-sum.py
 ```
 
-You’ll be prompted to paste a YouTube video URL. This method is designed for convenience — no need to pass arguments every time.
+You’ll be prompted to paste a YouTube video URL. This way you can easily keep calling it and just paste in the URLs.
 
----
-
-## How It Works
-
-1. The script extracts video metadata and downloads auto-generated subtitles.
-2. It cleans the subtitle text, splits it into GPT-safe chunks, and sends each chunk to GPT-4 for summarization.
-3. If available, it fetches top comments and provides a separate analysis of user sentiment.
-4. The final summary is printed in the terminal with optional user input between chunks.
-
----
-
-## Notes
-
-- Depending on video length and your system/network speed, processing may take 20–30 seconds.
-- GPT may hallucinate if the subtitles are poor or out of sync.
-- This is best used on informative videos (essays, documentaries, reviews, etc.).
-
----
-
-## Contribute
+- Takes about 30-60 seconds per video, but you can run it in the background easily.
+- Obviously it won't work well on videos without much talking.
+- The clickbait detector needs improvement.
 
 If you come up with interesting prompts feel free to share them.
-
----
-
-## Built with GPT
 
 This project was created using GPT.
 
