@@ -1,73 +1,55 @@
-import subprocess
-import re
 import os
-import glob
-import tiktoken
-import textwrap
-import uuid
-import concurrent.futures
+import re
 import time
+import glob
+import uuid
+import textwrap
+import subprocess
+import concurrent.futures
 
-from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+from urllib.parse import urlparse, parse_qs
 from openai import OpenAI
+from youtube_comment_downloader import YoutubeCommentDownloader, SORT_BY_POPULAR
+import tiktoken
 
-from youtube_comment_downloader import *
-from itertools import islice
+# ========== Utility Functions ==========
 
-def download_comments(video_id, max_comments=100):
-    downloader = YoutubeCommentDownloader()
-    comments = []
-    try:
-        for comment in downloader.get_comments_from_url(
-            f"https://www.youtube.com/watch?v={video_id}",
-            sort_by=SORT_BY_POPULAR
-        ):
-            text = comment.get("text", "")
-            if isinstance(text, str) and text.strip():
-                comments.append(text.strip())
-                if len(comments) >= max_comments:
-                    break
-    except Exception as e:
-        print(f"Error downloading comments: {e}")
-    return comments
-
-
-# ========== Utility: Wrap and format console output ==========
 def print_wrapped(title, text, width=120):
     divider = "=" * width
     print(f"\n{divider}\n{title.center(width)}\n{divider}\n")
     for line in text.splitlines():
         wrapped = textwrap.fill(line, width=width)
         print(wrapped)
-    print("\n")
+    print()
 
-# ========== Step 1: Ask user for YouTube URL ==========
 def get_youtube_url():
     return input("Enter the YouTube URL: ").strip()
 
-# ========== Step 2: Clean YouTube URL ==========
 def clean_youtube_url(url):
     """Strip everything after the first ampersand (&) to get the raw YouTube URL."""
     return url.split('&')[0]
 
+def extract_video_id(url):
+    parsed = urlparse(url)
+    qs = parse_qs(parsed.query)
+    return qs['v'][0] if 'v' in qs else "unknown_id"
+
+# ========== YouTube Metadata & Subtitles ==========
+
 def get_video_title(url):
     result = subprocess.run(
         ["yt-dlp", "--no-playlist", "--quiet", "--no-warnings", "--print", "%(title)s", url],
-        capture_output=True,
-        text=True
+        capture_output=True, text=True
     )
     return result.stdout.strip() if result.returncode == 0 else None
-    
+
 def get_channel_name(url):
     result = subprocess.run(
         ["yt-dlp", "--no-playlist", "--quiet", "--no-warnings", "--print", "%(channel)s", url],
-        capture_output=True,
-        text=True
+        capture_output=True, text=True
     )
     return result.stdout.strip() if result.returncode == 0 else "Unknown Channel"
 
-
-# ========== Step 4: Download subtitles ==========
 def download_subtitles(url, video_id):
     output_base = f"video_{video_id}_{uuid.uuid4().hex[:6]}"
     command = [
@@ -80,16 +62,12 @@ def download_subtitles(url, video_id):
         url
     ]
     subprocess.run(command, check=True)
-    return output_base, output_base  # fallback title = filename
+    return output_base, output_base
 
-
-
-# ========== Step 5: Find latest .srt file ==========
 def find_srt_file(base):
     files = glob.glob(f"{base}*.srt")
     return files[0] if files else None
 
-# ========== Step 6: Clean subtitle file ==========
 def clean_subtitles(filename):
     bad_words = ('-->', '</c>')
     prefix = re.compile(r"^>> ")
@@ -108,8 +86,27 @@ def clean_subtitles(filename):
             new_lines.append(line)
     return '\n'.join(new_lines)
 
+# ========== Comments ==========
 
-# ========== Step 7: Split into GPT-safe chunks ==========
+def download_comments(video_id, max_comments=100):
+    downloader = YoutubeCommentDownloader()
+    comments = []
+    try:
+        for comment in downloader.get_comments_from_url(
+            f"https://www.youtube.com/watch?v={video_id}",
+            sort_by=SORT_BY_POPULAR
+        ):
+            text = comment.get("text", "")
+            if isinstance(text, str) and text.strip():
+                comments.append(text.strip())
+                if len(comments) >= max_comments:
+                    break
+    except Exception as e:
+        print(f"Error downloading comments: {e}")
+    return comments
+
+# ========== Text Processing ==========
+
 def split_text_into_chunks(text, max_tokens=22000):
     enc = tiktoken.encoding_for_model("gpt-4o")
     lines = text.split('\n')
@@ -133,7 +130,8 @@ def split_text_into_chunks(text, max_tokens=22000):
 
     return chunks
 
-# ========== Step 8: Summarize each chunk ==========
+# ========== AI Summarization ==========
+
 def summarize_text(text, video_title, channel_name, comments=None):
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -151,10 +149,10 @@ def summarize_text(text, video_title, channel_name, comments=None):
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait."
+                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait."
                 },
                 {
-                    "role": "user",
+                    "role": "user", 
                     "content": f"Summarize this portion of the subtitles:\n\n{chunk}"
                 }
             ],
@@ -171,8 +169,7 @@ def summarize_text(text, video_title, channel_name, comments=None):
             if cont != 'y':
                 print("\nStopping early.\n")
                 break
-                
-    # Optional: Summarize comments
+
     if comments:
         comment_text = "\n".join(comments[:50])
         print("\nAnalyzing top comments...\n")
@@ -194,31 +191,21 @@ def summarize_text(text, video_title, channel_name, comments=None):
         )
         print_wrapped("Comment Analysis", response.choices[0].message.content)
 
-def extract_video_id(url):
-    parsed = urlparse(url)
-    qs = parse_qs(parsed.query)
-    return qs['v'][0] if 'v' in qs else "unknown_id"
-    
-def fetch_title(url):
-    return get_video_title(url)
+# ========== Threaded Fetch Wrappers ==========
 
-def fetch_channel(url):
-    return get_channel_name(url)
+def fetch_title(url): return get_video_title(url)
+def fetch_channel(url): return get_channel_name(url)
+def fetch_subtitles(url, video_id): return download_subtitles(url, video_id)
+def fetch_comments(video_id): return download_comments(video_id)
 
-def fetch_subtitles(url, video_id):
-    return download_subtitles(url, video_id)
+# ========== Main Entry ==========
 
-def fetch_comments(video_id):
-    return download_comments(video_id)
-
-
-# ========== Step 9: Main entry ==========
 if __name__ == "__main__":
-    start_time = time.time()  # ⏱️ Start timer
+    start_time = time.time()
     raw_url = get_youtube_url()
     cleaned_url = clean_youtube_url(raw_url)
     video_id = extract_video_id(cleaned_url)
-    
+
     if video_id == "unknown_id":
         print("Could not extract video ID from the URL.")
         exit(1)
@@ -231,7 +218,6 @@ if __name__ == "__main__":
         future_subs = executor.submit(fetch_subtitles, cleaned_url, video_id)
         future_comments = executor.submit(fetch_comments, video_id)
 
-        # Wait for all to finish
         title = future_title.result()
         channel = future_channel.result()
         output_base, _ = future_subs.result()
@@ -245,7 +231,6 @@ if __name__ == "__main__":
         print(f"Using video title: {title}")
         cleaned_text = clean_subtitles(srt_file)
         summarize_text(cleaned_text, title, channel, comments=comments)
-        
-    end_time = time.time()  # ⏱️ End timer
-    duration = end_time - start_time
+
+    duration = time.time() - start_time
     print(f"\n⏳ Total runtime: {duration:.2f} seconds\n")
