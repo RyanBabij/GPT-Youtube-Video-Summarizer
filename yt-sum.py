@@ -54,6 +54,7 @@ def download_subtitles(url, video_id):
     output_base = f"video_{video_id}_{uuid.uuid4().hex[:6]}"
     command = [
         "yt-dlp",
+        # "--cookies-from-browser", "firefox",
         "--no-playlist",
         "--write-auto-sub",
         "--convert-subs", "srt",
@@ -149,7 +150,7 @@ def summarize_text(text, video_title, channel_name, comments=None):
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait."
+                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait. If the video takes a long time to discuss something with a simple answer, it is clickbait."
                 },
                 {
                     "role": "user", 

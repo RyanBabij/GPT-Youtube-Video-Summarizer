@@ -20,6 +20,11 @@ You’ll be prompted to paste a YouTube video URL. This way you can easily keep 
 
 If you come up with interesting prompts feel free to share them.
 
+If the application tells you something about being a bot, you need to add in your browser cookies to the command array:
+
+```"--cookies-from-browser", "firefox",```
+```"--cookies-from-browser", "chrome",```
+
 This project was created using GPT.
 
 ## Sample output 1
