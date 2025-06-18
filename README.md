@@ -30,6 +30,126 @@ This project was created using GPT.
 ## Sample output 1
 
 ```
+
+python yt-sum.py
+Enter the YouTube URL: https://www.youtube.com/watch?v=Hr1agJcLO70
+
+Starting metadata and subtitle downloads in parallel...
+
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Hr1agJcLO70
+[youtube] Hr1agJcLO70: Downloading webpage
+[youtube] Hr1agJcLO70: Downloading tv client config
+[youtube] Hr1agJcLO70: Downloading tv player API JSON
+[youtube] Hr1agJcLO70: Downloading ios player API JSON
+[youtube] Hr1agJcLO70: Downloading m3u8 information
+[info] Hr1agJcLO70: Downloading subtitles: en
+[info] Hr1agJcLO70: Downloading 1 format(s): 399+251
+[info] Writing video subtitles to: video_Hr1agJcLO70_ce7111.en.vtt
+[download] Destination: video_Hr1agJcLO70_ce7111.en.vtt
+[download] 100% of  141.61KiB in 00:00:00 at 303.25KiB/s
+[SubtitlesConvertor] Converting subtitles
+Deleting original file video_Hr1agJcLO70_ce7111.en.vtt (pass -k to keep)
+Using video title: My TOP Add-Ons To IMPROVE REALISM in MSFS 2024
+
+Summarizing chunk 1/1...
+
+
+========================================================================================================================
+                                                    Chunk 1 Summary
+========================================================================================================================
+
+**Clickbait Rating: None**
+
+The video titled "My TOP Add-Ons To IMPROVE REALISM in MSFS 2024" by AirNOTT delivers on its promise by discussing
+various add-ons that enhance the realism of Microsoft Flight Simulator 2024. Here is a chronological summary of the key
+points discussed:
+
+1. **Introduction**: The presenter receives frequent questions about improving realism in MSFS 2024 and decides to share
+the core add-ons he uses.
+
+2. **Aircraft Add-Ons**:
+   - **Phoenix A320**: Highly recommended for Airbus fans, with an expansion pack for A319 and A321.
+   - **Any Builds A300**: A vintage Airbus option, with a freighter variant and a full 2024 build.
+   - **Airbus A350 by Any Builds**: Recently launched, available for both MSFS 2020 and 2024.
+   - **PMDG Boeings**: Awaiting full compatibility with MSFS 2024, but a favorite from MSFS 2020.
+   - **FlyByWire**: Offers A320 Neo and A380 for free; unofficially compatible with MSFS 2024.
+
+3. **Air Traffic Control (ATC) Enhancements**:
+   - **VATSIM**: An online network with real pilots and ATC, significantly enhancing realism.
+   - **Beyond ATC and Say Intentions**: Alternatives to default ATC, offering more realistic interactions.
+
+4. **Visual Enhancements**:
+   - **FS LTL**: Adds realistic liveries to planes, enhancing immersion.
+   - **Flight Sim.to**: A resource for additional liveries and add-ons.
+
+5. **Scenery Improvements**:
+   - **Payware and Freeware Scenery**: Importance of accurate airport scenery, with recommendations for both payware and
+free options from Flight Sim.to.
+   - **World Updates**: Free updates providing handcrafted airports.
+
+6. **Charts and Navigation**:
+   - **Navigraph**: A comprehensive chart service, essential for realism, especially when using VATSIM.
+   - **ChartFox**: A free alternative, though less comprehensive.
+   - **SimBrief**: A flight planning tool, free but enhanced with a Navigraph subscription.
+
+7. **Career Mode and Virtual Airlines**:
+   - **New Sky Platform**: Allows users to create and manage virtual airlines, offering a personalized career mode
+experience.
+
+8. **Ground Services**:
+   - **GSX**: Used for aircraft loading, pushback, and marshalling, despite occasional issues.
+
+9. **Conclusion**: The presenter invites viewers to share their favorite add-ons in the comments and promotes their
+Twitch channel for live streams.
+
+Overall, the video provides a comprehensive guide to enhancing realism in MSFS 2024, making it a valuable resource for
+enthusiasts looking to improve their simulation experience.
+
+
+Analyzing top comments...
+
+
+========================================================================================================================
+                                                    Comment Analysis
+========================================================================================================================
+
+**Reception Rating: Positive**
+
+The video by AirNOTT was well-received by viewers, with many expressing appreciation for the content and the
+recommendations provided. Here are some common themes and observations from the comment section:
+
+1. **Praise for Add-ons**: Many commenters praised specific add-ons mentioned in the video, such as BeyondATC,
+SayIntentions, and A Pilot’s Life Chapter 2. BeyondATC was particularly highlighted for its ability to enhance immersion
+by handling ATC communications and providing realistic traffic injection.
+
+2. **Vatsim vs. Alternatives**: There was a notable discussion about Vatsim and its alternatives. Some users expressed
+frustration with Vatsim due to the lack of traffic and ATC coverage, leading them to prefer alternatives like BeyondATC
+and SayIntentions, which offer 24/7 coverage and AI-controlled interactions.
+
+3. **Interest in ATC Programs**: Several commenters discussed the merits of different ATC programs, such as FSHud and
+SayIntentions, and expressed interest in further content exploring these tools.
+
+4. **Technical Challenges and Solutions**: A few users shared their experiences with technical challenges in MSFS 2024,
+such as autopilot issues with certain aircraft like the Fenix, and expressed a desire for solutions or guidance.
+
+5. **Realism and Immersion**: The importance of realism and immersion in flight simulation was a recurring theme, with
+many users appreciating tools that enhance these aspects, such as ATC programs and career simulation add-ons.
+
+6. **Humor and Light-Hearted Comments**: Some comments included light-hearted jokes or playful banter about the
+challenges of flight simulation, such as the difficulty of landing certain aircraft or the quirks of using Vatsim.
+
+Overall, the video was positively received, with viewers appreciating the insights and recommendations for improving
+realism in MSFS 2024. The discussion was largely constructive, with a focus on enhancing the flight simulation
+experience through various add-ons and tools.
+
+
+⏳ Total runtime: 42.38 seconds
+
+```
+
+## Sample output 2
+
+```
 python yt-sum.py
 Enter the YouTube URL: www.youtube.com/watch?v=T1w2Z4owDqQ
 
@@ -139,7 +259,7 @@ community it fosters, despite some critical reflections on past humor.
 ⏳ Total runtime: 40.94 seconds
 ```
 
-## Sample output 2
+## Sample output 3
 
 ```
 python yt-sum.py
@@ -267,7 +387,7 @@ format, leading to a mixed reception among viewers.
 ⏳ Total runtime: 53.26 seconds
 ```
 
-## Sample output 3
+## Sample output 4
 
 ```
 python yt-sum.py
