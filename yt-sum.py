@@ -54,7 +54,7 @@ def download_subtitles(url, video_id):
     output_base = f"video_{video_id}_{uuid.uuid4().hex[:6]}"
     command = [
         "yt-dlp",
-        "--cookies-from-browser", "firefox",
+        # "--cookies-from-browser", "firefox",
         "--no-playlist",
         "--write-auto-sub",
         "--convert-subs", "srt",
