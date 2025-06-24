@@ -54,7 +54,7 @@ def download_subtitles(url, video_id):
     output_base = f"video_{video_id}_{uuid.uuid4().hex[:6]}"
     command = [
         "yt-dlp",
-        # "--cookies-from-browser", "firefox",
+        "--cookies-from-browser", "firefox",
         "--no-playlist",
         "--write-auto-sub",
         "--convert-subs", "srt",
@@ -150,14 +150,14 @@ def summarize_text(text, video_title, channel_name, comments=None):
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait. If the video takes a long time to discuss something with a simple answer, it is clickbait."
+                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the video is a list of things, provide the list. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. Provide 1 sentence explaining your decision. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait. If the video takes a long time to discuss something with a simple answer, it is clickbait. Do not use markdown. Use ALL CAPS for headings."
                 },
                 {
                     "role": "user", 
                     "content": f"Summarize this portion of the subtitles:\n\n{chunk}"
                 }
             ],
-            temperature=0.5,
+            temperature=0.3,
             max_tokens=1000
         )
 
@@ -171,6 +171,9 @@ def summarize_text(text, video_title, channel_name, comments=None):
                 print("\nStopping early.\n")
                 break
 
+    full_summary = "\n\n".join(partial_summaries)
+    comment_analysis = ""
+    
     if comments:
         comment_text = "\n".join(comments[:50])
         print("\nAnalyzing top comments...\n")
@@ -180,17 +183,46 @@ def summarize_text(text, video_title, channel_name, comments=None):
                 {
                     "role": "system",
                     "content": f"You are a helpful assistant summarizing a YouTube video's comment section for the video titled '{video_title}' by '{channel_name}'."
-                               " Look for common themes, praise, criticism, jokes, or controversy. Point out whether the video was well-received or not. At the beginning, provide a reception rating of positive, mixed, or negative, depending on whether viewers liked the video or not."
+                               " Look for common themes, praise, criticism, jokes, or controversy. Point out whether the video was well-received or not. At the beginning, provide a reception rating of positive, mixed, or negative. Do not use markdown. Use ALL CAPS for headings."
                 },
                 {
                     "role": "user",
                     "content": f"Here are the top comments:\n\n{comment_text}"
                 }
             ],
+            temperature=0.3,
+            max_tokens=1000
+        )
+        comment_analysis = response.choices[0].message.content
+        print_wrapped("Comment Analysis", comment_analysis)
+        
+    duration = time.time() - start_time
+    print(f"\n⏳ Total runtime: {duration:.2f} seconds\n")
+
+    # ==== Follow-up Q&A ====
+    # print_wrapped("Summary", full_summary)
+    print("\nYou can now ask follow-up questions about the video. Type 'exit' to quit.\n")
+
+    while True:
+        question = input("❓ Ask a question: ").strip()
+        if question.lower() in {"exit", "quit"}:
+            print("Exiting Q&A.\n")
+            break
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": f"You are a helpful assistant answering questions about a YouTube video titled '{video_title}' by '{channel_name}'."},
+                {"role": "user", "content": f"Here is a summary of the video:\n{full_summary}"},
+                {"role": "user", "content": f"Here is the comment analysis:\n{comment_analysis}"},
+                {"role": "user", "content": f"User question: {question}"}
+            ],
             temperature=0.5,
             max_tokens=1000
         )
-        print_wrapped("Comment Analysis", response.choices[0].message.content)
+        answer = response.choices[0].message.content
+        print_wrapped("Answer", answer)
+
 
 # ========== Threaded Fetch Wrappers ==========
 
@@ -233,5 +265,3 @@ if __name__ == "__main__":
         cleaned_text = clean_subtitles(srt_file)
         summarize_text(cleaned_text, title, channel, comments=comments)
 
-    duration = time.time() - start_time
-    print(f"\n⏳ Total runtime: {duration:.2f} seconds\n")
