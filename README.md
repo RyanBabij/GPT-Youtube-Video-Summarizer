@@ -27,7 +27,16 @@ If the application tells you something about being a bot, you need to add in you
 
 This project was created using GPT.
 
-## Sample output 1
+## Clickbait detection
+This has proven difficult to implement but it's somewhat functional. I have found it best to break the rating system into categories which are currently: None, exaggerated, misinformation, clickbait.
+
+## Issues
+
+* The clickbait detector isn't as good as I would like it to be.
+* It's great at extracting lists of things from shorter videos but in very long videos it may have difficulty.
+* The followup question feature isn't very helpful atm.
+
+## Sample output 1 - My TOP Add-Ons To IMPROVE REALISM in MSFS 2024
 
 ```
 
@@ -36,230 +45,259 @@ Enter the YouTube URL: https://www.youtube.com/watch?v=Hr1agJcLO70
 
 Starting metadata and subtitle downloads in parallel...
 
+Extracting cookies from firefox
+Extracted 2479 cookies from firefox
 [youtube] Extracting URL: https://www.youtube.com/watch?v=Hr1agJcLO70
 [youtube] Hr1agJcLO70: Downloading webpage
 [youtube] Hr1agJcLO70: Downloading tv client config
 [youtube] Hr1agJcLO70: Downloading tv player API JSON
-[youtube] Hr1agJcLO70: Downloading ios player API JSON
-[youtube] Hr1agJcLO70: Downloading m3u8 information
 [info] Hr1agJcLO70: Downloading subtitles: en
 [info] Hr1agJcLO70: Downloading 1 format(s): 399+251
-[info] Writing video subtitles to: video_Hr1agJcLO70_ce7111.en.vtt
-[download] Destination: video_Hr1agJcLO70_ce7111.en.vtt
-[download] 100% of  141.61KiB in 00:00:00 at 303.25KiB/s
+[info] Writing video subtitles to: video_Hr1agJcLO70_72b577.en.vtt
+[download] Destination: video_Hr1agJcLO70_72b577.en.vtt
+[download] 100% of  141.61KiB in 00:00:02 at 63.46KiB/s
 [SubtitlesConvertor] Converting subtitles
-Deleting original file video_Hr1agJcLO70_ce7111.en.vtt (pass -k to keep)
-Using video title: My TOP Add-Ons To IMPROVE REALISM in MSFS 2024
+Deleting original file video_Hr1agJcLO70_72b577.en.vtt (pass -k to keep)
+Video title: My TOP Add-Ons To IMPROVE REALISM in MSFS 2024
 
 Summarizing chunk 1/1...
 
+                                CHUNK 1 SUMMARY
+================================================================================
 
-========================================================================================================================
-                                                    Chunk 1 Summary
-========================================================================================================================
 
-**Clickbait Rating: None**
+CLICKBAIT RATING: None. The video delivers on its promise by providing a
+detailed list of add-ons to improve realism in Microsoft Flight Simulator 2024.
 
-The video titled "My TOP Add-Ons To IMPROVE REALISM in MSFS 2024" by AirNOTT delivers on its promise by discussing
-various add-ons that enhance the realism of Microsoft Flight Simulator 2024. Here is a chronological summary of the key
-points discussed:
+KEY POINTS:
+1. The video discusses various aircraft add-ons, including the Phoenix A320 and
+FlyByWire planes, to enhance realism in Microsoft Flight Simulator 2024.
+2. It highlights the importance of using VATSIM for realistic air traffic
+control and mentions alternative ATC systems like Beyond ATC and Say Intentions.
+3. The video emphasizes the significance of accurate scenery, charts, and ground
+services, recommending resources like Navigraph, SimBrief, and GSX.
 
-1. **Introduction**: The presenter receives frequent questions about improving realism in MSFS 2024 and decides to share
-the core add-ons he uses.
+DETAILED SUMMARY:
 
-2. **Aircraft Add-Ons**:
-   - **Phoenix A320**: Highly recommended for Airbus fans, with an expansion pack for A319 and A321.
-   - **Any Builds A300**: A vintage Airbus option, with a freighter variant and a full 2024 build.
-   - **Airbus A350 by Any Builds**: Recently launched, available for both MSFS 2020 and 2024.
-   - **PMDG Boeings**: Awaiting full compatibility with MSFS 2024, but a favorite from MSFS 2020.
-   - **FlyByWire**: Offers A320 Neo and A380 for free; unofficially compatible with MSFS 2024.
+INTRODUCTION
+- The video begins by addressing a common question from viewers about how to
+make Microsoft Flight Simulator 2024 more realistic, and the host plans to share
+the core add-ons used to enhance the experience.
 
-3. **Air Traffic Control (ATC) Enhancements**:
-   - **VATSIM**: An online network with real pilots and ATC, significantly enhancing realism.
-   - **Beyond ATC and Say Intentions**: Alternatives to default ATC, offering more realistic interactions.
+AIRCRAFT ADD-ONS
+- The host praises the default planes in Flight Simulator 2024 but recommends
+additional aircraft for enthusiasts, such as the Phoenix A320, which includes an
+expansion pack for the A319 and A321.
+- For vintage Airbus fans, the AnyBuilds Airbus A300 is recommended, and the
+newly launched Airbus A350 is highlighted for its detailed design.
+- PMDG Boeings are suggested for serious simmers, though they are still being
+adapted for 2024.
+- FlyByWire offers free alternatives like the A320 Neo and A380, which can be
+transferred from the 2020 version to 2024.
 
-4. **Visual Enhancements**:
-   - **FS LTL**: Adds realistic liveries to planes, enhancing immersion.
-   - **Flight Sim.to**: A resource for additional liveries and add-ons.
+AIR TRAFFIC CONTROL
+- VATSIM is recommended as the best way to enhance realism with real pilots and
+air traffic controllers, despite requiring a base level of knowledge and a test.
+- Alternatives to the default ATC system include Beyond ATC and Say Intentions,
+both offering advanced features and different pricing models.
 
-5. **Scenery Improvements**:
-   - **Payware and Freeware Scenery**: Importance of accurate airport scenery, with recommendations for both payware and
-free options from Flight Sim.to.
-   - **World Updates**: Free updates providing handcrafted airports.
+SCENERY AND LIVERIES
+- The importance of accurate scenery is discussed, especially for use with
+VATSIM, with recommendations for both payware and free options from
+FlightSim.to.
+- FS LTL is suggested for realistic liveries, enhancing the visual experience
+when connected to VATSIM.
 
-6. **Charts and Navigation**:
-   - **Navigraph**: A comprehensive chart service, essential for realism, especially when using VATSIM.
-   - **ChartFox**: A free alternative, though less comprehensive.
-   - **SimBrief**: A flight planning tool, free but enhanced with a Navigraph subscription.
+CHARTS AND FLIGHT PLANNING
+- Navigraph is recommended for comprehensive charts and keeping nav data up to
+date, with ChartFox as a free alternative.
+- SimBrief is highlighted as a powerful flight planning tool, integrated with
+Navigraph for the latest data.
 
-7. **Career Mode and Virtual Airlines**:
-   - **New Sky Platform**: Allows users to create and manage virtual airlines, offering a personalized career mode
+CAREER MODE AND VIRTUAL AIRLINES
+- The host mentions the new career mode in Flight Simulator 2024 but prefers
+using a virtual airline through New Sky, which offers a dynamic and competitive
 experience.
 
-8. **Ground Services**:
-   - **GSX**: Used for aircraft loading, pushback, and marshalling, despite occasional issues.
+GROUND SERVICES
+- GSX is used for loading aircraft and pushback services, despite occasional
+issues, and is noted for its integration with some aircraft add-ons.
 
-9. **Conclusion**: The presenter invites viewers to share their favorite add-ons in the comments and promotes their
-Twitch channel for live streams.
-
-Overall, the video provides a comprehensive guide to enhancing realism in MSFS 2024, making it a valuable resource for
-enthusiasts looking to improve their simulation experience.
+CONCLUSION
+- The video concludes by inviting viewers to share their own add-ons and
+experiences in the comments, encouraging community engagement. The host also
+promotes their Twitch channel for live streaming sessions.
 
 
 Analyzing top comments...
 
-
-========================================================================================================================
-                                                    Comment Analysis
-========================================================================================================================
-
-**Reception Rating: Positive**
-
-The video by AirNOTT was well-received by viewers, with many expressing appreciation for the content and the
-recommendations provided. Here are some common themes and observations from the comment section:
-
-1. **Praise for Add-ons**: Many commenters praised specific add-ons mentioned in the video, such as BeyondATC,
-SayIntentions, and A Pilot’s Life Chapter 2. BeyondATC was particularly highlighted for its ability to enhance immersion
-by handling ATC communications and providing realistic traffic injection.
-
-2. **Vatsim vs. Alternatives**: There was a notable discussion about Vatsim and its alternatives. Some users expressed
-frustration with Vatsim due to the lack of traffic and ATC coverage, leading them to prefer alternatives like BeyondATC
-and SayIntentions, which offer 24/7 coverage and AI-controlled interactions.
-
-3. **Interest in ATC Programs**: Several commenters discussed the merits of different ATC programs, such as FSHud and
-SayIntentions, and expressed interest in further content exploring these tools.
-
-4. **Technical Challenges and Solutions**: A few users shared their experiences with technical challenges in MSFS 2024,
-such as autopilot issues with certain aircraft like the Fenix, and expressed a desire for solutions or guidance.
-
-5. **Realism and Immersion**: The importance of realism and immersion in flight simulation was a recurring theme, with
-many users appreciating tools that enhance these aspects, such as ATC programs and career simulation add-ons.
-
-6. **Humor and Light-Hearted Comments**: Some comments included light-hearted jokes or playful banter about the
-challenges of flight simulation, such as the difficulty of landing certain aircraft or the quirks of using Vatsim.
-
-Overall, the video was positively received, with viewers appreciating the insights and recommendations for improving
-realism in MSFS 2024. The discussion was largely constructive, with a focus on enhancing the flight simulation
-experience through various add-ons and tools.
+                                COMMENT ANALYSIS
+================================================================================
 
 
-⏳ Total runtime: 42.38 seconds
+RECEPTION RATING: POSITIVE
+
+COMMON THEMES:
+1. Vatsim vs. BeyondATC/SayIntentions: Many commenters discuss the use of Vatsim
+and alternatives like BeyondATC and SayIntentions, highlighting the benefits of
+having AI-controlled ATC available worldwide at any time.
+2. Add-ons and Tools: There is a strong interest in various add-ons such as A
+Pilot's Life, FSHud, and Volanta, with users sharing their experiences and
+preferences.
+3. Realism and Immersion: Commenters appreciate tools that enhance realism, such
+as traffic injection and ATC communication, which make the simulation feel more
+alive.
+4. Transition to MSFS 2024: Some users discuss the transition from MSFS 2020 to
+2024, with mixed feelings about the availability of add-ons and the stability of
+the new version.
+
+PRAISE:
+- The video is well-received, with many viewers thanking the creator for the
+information and expressing interest in trying out the recommended add-ons.
+- Commenters appreciate the detailed descriptions and recommendations provided
+in the video.
+
+CRITICISM:
+- Some users express frustration with the transition to MSFS 2024, citing issues
+with add-on compatibility and stability compared to MSFS 2020.
+- A few comments mention dissatisfaction with specific aircraft models or
+features within the simulator.
+
+JOKES:
+- A light-hearted comment refers to the A318 as the "minibus," adding humor to
+the discussion.
+
+CONTROVERSY:
+- There is some debate over the effectiveness and preference of different ATC
+programs, with users sharing varied experiences and opinions on which is
+superior.
+
+Overall, the video is well-received, with viewers finding the content
+informative and helpful for enhancing realism in MSFS 2024.
+
 
 ```
 
-## Sample output 2
+## Sample output 2 - Dunkey's Best of 2016
 
 ```
 python yt-sum.py
-Enter the YouTube URL: www.youtube.com/watch?v=T1w2Z4owDqQ
+Enter the YouTube URL: https://www.youtube.com/watch?v=7y9CLWJvia8
 
 Starting metadata and subtitle downloads in parallel...
 
-[generic] Extracting URL: www.youtube.com/watch?v=T1w2Z4owDqQ
-WARNING: [generic] The url doesn't specify the protocol, trying with http
-[youtube] Extracting URL: http://www.youtube.com/watch?v=T1w2Z4owDqQ
-[youtube] T1w2Z4owDqQ: Downloading webpage
-[youtube] T1w2Z4owDqQ: Downloading tv client config
-[youtube] T1w2Z4owDqQ: Downloading tv player API JSON
-[youtube] T1w2Z4owDqQ: Downloading ios player API JSON
-[youtube] T1w2Z4owDqQ: Downloading m3u8 information
-[info] T1w2Z4owDqQ: Downloading subtitles: en
-[info] T1w2Z4owDqQ: Downloading 1 format(s): 18
-[info] Writing video subtitles to: video_T1w2Z4owDqQ_5b6e1f.en.vtt
-[download] Destination: video_T1w2Z4owDqQ_5b6e1f.en.vtt
-[download] 100% of  130.98KiB in 00:00:01 at 102.41KiB/s
+Extracting cookies from firefox
+Extracted 2499 cookies from firefox
+[youtube] Extracting URL: https://www.youtube.com/watch?v=7y9CLWJvia8
+[youtube] 7y9CLWJvia8: Downloading webpage
+[youtube] 7y9CLWJvia8: Downloading tv client config
+[youtube] 7y9CLWJvia8: Downloading tv player API JSON
+[info] 7y9CLWJvia8: Downloading subtitles: en
+[info] 7y9CLWJvia8: Downloading 1 format(s): 399+251
+[info] Writing video subtitles to: video_7y9CLWJvia8_628cd2.en.vtt
+[download] Destination: video_7y9CLWJvia8_628cd2.en.vtt
+[download] 100% of  101.88KiB in 00:00:01 at 99.60KiB/s
 [SubtitlesConvertor] Converting subtitles
-Deleting original file video_T1w2Z4owDqQ_5b6e1f.en.vtt (pass -k to keep)
-Using video title: Ocarina of Time Master Quest   01
+Deleting original file video_7y9CLWJvia8_628cd2.en.vtt (pass -k to keep)
+Video title: Dunkey's Best of 2016
 
 Summarizing chunk 1/1...
 
+                                CHUNK 1 SUMMARY
+================================================================================
 
-========================================================================================================================
-                                                    Chunk 1 Summary
-========================================================================================================================
 
-**Clickbait Rating: None**
+CLICKBAIT RATING: None. The video title "Dunkey's Best of 2016" accurately
+describes the content, which is a humorous and satirical review of video games
+from 2016.
 
-**Summary:**
+KEY POINTS:
+1. Dunkey expresses disappointment with the gaming industry's tendency to
+exploit player optimism, citing examples like "Hitman" and contrasting it with
+more open-ended games like "Metal Gear Solid V."
+2. Despite initial disappointments, Dunkey highlights several games from 2016
+that he enjoyed, including "Ultimate Chicken Horse," "Color Splash," and
+"Stardew Valley," among others.
+3. The video humorously lists and reviews various games, both old and new, with
+a comedic twist, ultimately naming "Super Mario Bros. 2" as the game of the year
+in a satirical manner.
 
-The video "Ocarina of Time Master Quest 01" by Maxwell Adams is a humorous playthrough of the game "The Legend of Zelda:
-Ocarina of Time Master Quest." The video is not clickbait as it delivers exactly what the title suggests: a gameplay
-session of the game.
+DETAILED SUMMARY:
 
-- **Introduction:** The video begins with Maxwell Adams and his friends, Fair and Pipes, setting up to play "Ocarina of
-Time Master Quest" in one sitting. They introduce a humorous twist by simultaneously watching the "Lord of the Rings:
-Fellowship of the Ring" extended edition, treating it as an "Epic Fantasy Race."
+INTRODUCTION AND DISAPPOINTMENTS:
+Dunkey begins by discussing his high expectations for 2016, which were
+ultimately unmet, highlighting how the gaming industry often exploits player
+optimism. He mentions "Fable 2" as an example of over-promised features and
+expresses disappointment with "Hitman," which started strong but became
+restrictive over time, especially when compared to the freedom offered in "Metal
+Gear Solid V."
 
-- **Gameplay Start:** The game begins with Link sleeping in a Zen-like rock garden. The humor kicks in with a challenge
-for one of the participants, IC, to comment without asking questions, likened to a backward Jeopardy game. Another
-challenge involves refraining from making fart noises when using the horse's carrots in the game.
+HIGHLIGHTS OF 2016:
+Despite initial disappointments, Dunkey reflects on the good games he played in
+2016. He mentions "The Witness," "The Last Guardian," and "Ultimate Chicken
+Horse," praising the latter for its simple yet competitive gameplay. He also
+discusses "Color Splash," which recaptured some of the original "Paper Mario"
+magic, and "Stardew Valley," a favorite of his partner Leah.
 
-- **Humor and Commentary:** The participants engage in light-hearted banter, making jokes about the game and the movie.
-They point out differences in game versions, such as the change in the color of the arrow from blue to green to match
-the GameCube controller.
+HUMOROUS REVIEWS AND LIST:
+Dunkey humorously reviews several games, both old and new, with exaggerated
+praise and comedic commentary. He highlights "Sonic the Hedgehog 3" for its
+replayability and unique design, "Abzu" for its relaxing experience, and "Call
+of Duty: Modern Warfare 2" for its chaotic multiplayer and engaging single-
+player campaign. He also praises "Ratchet & Clank" for its weapons and gameplay,
+"Overwatch" for its polish and excitement, and "Inside" for its compelling story
+and unique narrative.
 
-- **Observations and Jokes:** The group makes observations about the game's start being slow, poking fun at Link's lack
-of a fairy, and the cinematic style of the opening. They humorously compare getting a fairy to events like a first
-period or circumcision.
-
-- **Technical and Gameplay Notes:** They note the differences in controls and graphics between the original N64 version
-and the GameCube version, including the frame rate running at 50 frames per second due to the PAL ROM used for hacking.
-
-- **Challenges and Tasks:** The players discuss their objectives, like collecting rupees, and make jokes about the
-game's mechanics, such as Link's method of walking being faster when Z-targeting and walking backward.
-
-- **Continued Banter:** The humor continues with jokes about the Lord of the Rings scenes, the game's dialogue, and
-Link's equipment. They make playful references to other media, such as "Pulp Fiction" and "Big."
-
-- **Conclusion of Section:** The section concludes with the group entering the first dungeon, the Deku Tree, and
-encountering the first enemies. They continue to joke about the game's mechanics and the challenges they set for
-themselves, including enforcing the "no questions" rule.
-
-Overall, the video is a mix of gameplay, humorous commentary, and pop culture references, providing entertainment for
-fans of both the game and the "Lord of the Rings" series.
+CONCLUSION:
+The video concludes with a satirical twist, naming "Super Mario Bros. 2" as the
+game of the year, humorously dismissing "Knack" and teasing a potential "Knack
+3." Throughout, Dunkey maintains a comedic tone, blending genuine critique with
+playful exaggeration.
 
 
 Analyzing top comments...
 
-
-========================================================================================================================
-                                                    Comment Analysis
-========================================================================================================================
-
-**Reception Rating: Positive**
-
-The video "Ocarina of Time Master Quest 01" by Maxwell Adams was well-received by viewers, as indicated by the comments.
-Several themes and sentiments emerge from the comment section:
-
-1. **Nostalgia and Comfort**: Many commenters express nostalgia, recalling fond memories of watching the Freelance
-Astronauts' videos during various life events, such as cleaning, studying, or during long gaming sessions. The videos
-are often described as comforting background noise, creating a relaxing atmosphere.
-
-2. **Praise for Content**: The content is praised for its quality and entertainment value. Viewers appreciate the
-camaraderie among the creators and the fun, laid-back style of the videos. The series is described as "quality content
-in a sea of mediocrity," highlighting its enduring appeal.
-
-3. **Community and Shared Experiences**: Commenters share personal anecdotes about how they discovered the Freelance
-Astronauts and the impact the videos had on their lives. There is a sense of community among viewers who have followed
-the series for years.
-
-4. **Criticism of Past Humor**: Some viewers reflect on the humor used in the videos, particularly the prevalence of gay
-jokes, which were more common in the early 2000s. While some find these jokes dated and insensitive, others argue that
-they were not intended to be hateful. This reflects broader discussions about changing social norms and the evolution of
-humor.
-
-5. **Engagement with Other Media**: Comments mention how the video inspires viewers to engage with other games or media,
-such as playing Disgaea or rewatching "The Lord of the Rings."
-
-Overall, the video is positively received, with viewers expressing appreciation for its nostalgic value and the sense of
-community it fosters, despite some critical reflections on past humor.
+                                COMMENT ANALYSIS
+================================================================================
 
 
-⏳ Total runtime: 40.94 seconds
+RECEPTION: POSITIVE
+
+COMMON THEMES
+- Nostalgia and re-watchability: Many comments mention that Dunkey's videos,
+including his yearly top 10s, are enjoyable and re-watchable even years later.
+- Humor and comedic genius: Dunkey is praised for his humor and comedic timing,
+with several comments highlighting how funny and entertaining his content is.
+- Insightful commentary: Viewers appreciate Dunkey's insightful commentary on
+the video game industry, noting his ability to present ideas clearly and
+humorously.
+
+PRAISE
+- Dunkey is celebrated for his ability to make thoughtful and passionate content
+that remains engaging over time.
+- His unique style of humor and commentary is consistently praised, with many
+viewers expressing their admiration for his work.
+
+CRITICISM
+- Some comments jokingly criticize Dunkey for including games that didn't come
+out in 2016 in his "Best of 2016" list, though this is mostly in jest.
+
+JOKES
+- Several comments contain jokes about Dunkey's recurring inclusion of Super
+Mario Bros 2 as his game of the year.
+- There are humorous remarks about the Halo music over Donkey Kong and the lack
+of a Morgan Freeman voiceover in Abzu.
+
+CONTROVERSY
+- There is a minor controversy regarding the inclusion of games not released in
+2016, but it is mostly treated humorously by the commenters.
+
+OVERALL
+The video was well-received, with viewers expressing enjoyment and appreciation
+for Dunkey's humor, insight, and re-watchability of his content.
 ```
 
-## Sample output 3
+## Sample output 3 - Jordan Peterson vs 20 Atheists | Surrounded
 
 ```
 python yt-sum.py
@@ -267,205 +305,270 @@ Enter the YouTube URL: https://www.youtube.com/watch?v=Pwk5MPE_6zE&t=2241s
 
 Starting metadata and subtitle downloads in parallel...
 
+Extracting cookies from firefox
+Extracted 2499 cookies from firefox
 [youtube] Extracting URL: https://www.youtube.com/watch?v=Pwk5MPE_6zE
 [youtube] Pwk5MPE_6zE: Downloading webpage
 [youtube] Pwk5MPE_6zE: Downloading tv client config
 [youtube] Pwk5MPE_6zE: Downloading tv player API JSON
-[youtube] Pwk5MPE_6zE: Downloading ios player API JSON
-[youtube] Pwk5MPE_6zE: Downloading m3u8 information
 [info] Pwk5MPE_6zE: Downloading subtitles: en
-[info] Pwk5MPE_6zE: Downloading 1 format(s): 616+251
-[info] Writing video subtitles to: video_Pwk5MPE_6zE_585380.en.vtt
-[download] Destination: video_Pwk5MPE_6zE_585380.en.vtt
-[download] 100% of  854.32KiB in 00:00:02 at 378.97KiB/s
+[info] Pwk5MPE_6zE: Downloading 1 format(s): 399+251
+[info] Writing video subtitles to: video_Pwk5MPE_6zE_55b20c.en.vtt
+[download] Destination: video_Pwk5MPE_6zE_55b20c.en.vtt
+[download] 100% of  854.32KiB in 00:00:00 at 864.43KiB/s
 [SubtitlesConvertor] Converting subtitles
-Deleting original file video_Pwk5MPE_6zE_585380.en.vtt (pass -k to keep)
-Using video title: Jordan Peterson vs 20 Atheists | Surrounded
+Deleting original file video_Pwk5MPE_6zE_55b20c.en.vtt (pass -k to keep)
+Video title: Jordan Peterson vs 20 Atheists | Surrounded
 
 Summarizing chunk 1/1...
 
+                                CHUNK 1 SUMMARY
+================================================================================
 
-========================================================================================================================
-                                                    Chunk 1 Summary
-========================================================================================================================
 
-**Clickbait Rating: Partial**
+CLICKBAIT RATING: EXAGGERATED. The title suggests a confrontational debate
+between Jordan Peterson and a large group of atheists, which is somewhat
+accurate but dramatized for effect.
 
-The video titled "Jordan Peterson vs 20 Atheists | Surrounded" by Jubilee is partially clickbait. While the title
-suggests a confrontational debate between Jordan Peterson and a large group of atheists, which does occur, the video
-primarily focuses on discussions rather than a heated debate. The title may imply a more aggressive confrontation than
-what actually takes place, as the conversations are structured and aim to explore philosophical and theological ideas
-rather than simply argue.
+KEY POINTS:
+1. Jordan Peterson argues that atheists reject God without fully understanding
+what they are rejecting, leading to a discussion on the nature of God and
+atheism.
+2. The conversation explores the idea that morality and purpose cannot be
+derived solely from science, suggesting that these concepts are inherently tied
+to religious or spiritual beliefs.
+3. The dialogue touches on the notion that everyone, including atheists,
+worships something, as worship is defined as prioritizing and sacrificing for
+something of value.
 
-**Summary:**
+DETAILED SUMMARY:
 
-1. **Introduction and Setup:**
-   - The video begins with a participant questioning Jordan Peterson's religious beliefs, highlighting a
-misunderstanding about his stance as a Christian.
-   - Peterson introduces himself and states his claim that atheists reject God without understanding what they're
-rejecting.
+INTRODUCTION
+- The video begins with a heated exchange questioning Jordan Peterson's
+religious beliefs, leading to his introduction as a clinical psychologist and
+public speaker surrounded by atheists.
+- Peterson's first claim is that atheists reject God without understanding what
+they are rejecting.
 
-2. **First Interaction:**
-   - A participant with a background in Catholicism challenges Peterson on his claim, arguing that he has a deep
-understanding of what he's rejecting.
-   - Peterson suggests that atheists have a reductive notion of God and that their rejection often stems from personal
-hurt or negative experiences with religion.
+DISCUSSION ON GOD AND ATHEISM
+- An atheist with a background in Catholicism challenges Peterson's claim,
+arguing that he has a deep understanding of what he left behind.
+- Peterson suggests that atheists often have a reductive view of God and may
+have been hurt by religious experiences.
+- The conversation delves into defining God, with Peterson emphasizing the
+complexity and unknowability of the divine.
 
-3. **Discussion on Definitions:**
-   - The conversation shifts to defining God, with Peterson asking how the participant defines the God they reject.
-   - The participant argues that Peterson's definition of religion is too broad and that his view of atheism is
-reductive.
+MORALITY AND PURPOSE
+- Peterson claims that morality and purpose cannot be found within science,
+sparking a debate on whether moral frameworks can exist independently of
+religious beliefs.
+- Examples from animal behavior are used to argue that morality is intrinsic to
+social animals, but Peterson counters that science must exist within a moral
+framework not derived from science itself.
 
-4. **Biblical Interpretation:**
-   - Peterson discusses the complexity of interpreting biblical stories, using the story of Moses as an example.
-   - The participant argues about the multiple interpretations of biblical texts and questions Peterson's approach to
-defining God.
+WORSHIP AND PRIORITIZATION
+- The concept of worship is discussed, with Peterson defining it as prioritizing
+and sacrificing for something, suggesting that everyone worships something.
+- The conversation explores whether prioritizing relationships, like marriage,
+constitutes worship.
 
-5. **Morality and Science:**
-   - Peterson claims that morality and purpose cannot be found within science, prompting discussions on morality's
-origins and its relation to social animals.
-   - Participants argue that morality has evolutionary roots and does not necessarily require religious foundations.
+CHRISTIAN MORALITY AND BIBLICAL INTERPRETATION
+- The video addresses the interpretation of Christian morality and the Bible,
+questioning whether Peterson's framework aligns with traditional Christian
+teachings.
+- The discussion includes the role of historical events in the Bible and their
+significance for faith and morality.
 
-6. **Concept of Worship:**
-   - Peterson claims that everyone, including atheists, worships something, defined as what they prioritize and
-sacrifice for.
-   - Participants challenge this definition, arguing that it dilutes the traditional understanding of worship.
-
-7. **Christian Morality and Atheism:**
-   - Peterson argues that atheists accept Christian morality but deny the religion's foundational stories.
-   - Discussions ensue about the nature of Christian ethics and the historical context of biblical commands.
-
-8. **Final Reflections:**
-   - Peterson reflects on the conversations, emphasizing the importance of dialogue aimed at understanding rather than
-winning.
-   - Participants express mixed feelings about Peterson's approach, noting his tendency to redefine terms and concepts.
-
-Overall, the video explores deep philosophical and theological questions, with Peterson engaging in dialogues that
-challenge both his and the participants' viewpoints. While the title suggests a more adversarial setup, the content
-focuses on exploring and questioning beliefs rather than outright debate.
+CONCLUSION
+- The video concludes with reflections on the nature of productive debate and
+the importance of mutual exploration in discussions about faith and belief
+systems.
+- Participants express mixed feelings about Peterson's approach, noting his
+ability to engage thoughtfully while also critiquing his definitional
+flexibility.
 
 
 Analyzing top comments...
 
-
-========================================================================================================================
-                                                    Comment Analysis
-========================================================================================================================
-
-**Reception Rating: Mixed**
-
-The comment section for the video "Jordan Peterson vs 20 Atheists | Surrounded" by Jubilee reveals a mixed reception
-from viewers. Here are some common themes and observations:
-
-1. **Title Change and Humor**: Many commenters noted and joked about the title change from “1 Christian vs 20 Atheists”
-to “Jordan Peterson vs 20 Atheists.” This change was seen as humorous by some, suggesting it reflects how the narrative
-or context of the video was perceived or altered.
-
-2. **Misrepresentation Concerns**: A significant number of comments criticize the choice of Jordan Peterson to represent
-Christians, pointing out that he has never explicitly claimed to be one. Viewers expressed that a more traditional
-Christian figure, such as a pastor or theologian, would have been more appropriate.
-
-3. **Debate Style and Confusion**: Several comments critique Peterson’s debate style, describing it as evasive and
-confusing. There is a sentiment that he doesn’t clearly state his beliefs, making it difficult for others to engage with
-him meaningfully.
-
-4. **Praise and Defense**: Some viewers defended Peterson, suggesting he represented Christian values well, despite not
-being a traditional Christian. A few commenters appreciated his philosophical approach and honesty regarding his
-beliefs.
-
-5. **Criticism of Jubilee's Format**: The format of the video itself was criticized, with some viewers feeling it was
-more of an ambush than a fair debate. There were calls for more structured and meaningful discussions with experts in
-the field.
-
-6. **Humor and Sarcasm**: The comments also include humorous and sarcastic takes on the situation, with jokes about
-Peterson’s enigmatic nature and hypothetical debate scenarios.
-
-Overall, the video sparked controversy and debate about representation, debate tactics, and the intentions behind the
-format, leading to a mixed reception among viewers.
+                                COMMENT ANALYSIS
+================================================================================
 
 
-⏳ Total runtime: 53.26 seconds
+RECEPTION RATING: MIXED
+
+COMMON THEMES
+- Confusion about Jordan Peterson's religious stance and whether he is a
+Christian.
+- Criticism of Jubilee for the way the video was set up, with some feeling it
+was a setup or ambush.
+- Discussion about the title change from "1 Christian vs 20 Atheists" to "Jordan
+Peterson vs 20 Atheists."
+- Debate over whether Peterson was the right choice to represent Christianity in
+this context.
+
+PRAISE
+- Some viewers appreciated Peterson's philosophical approach and his ability to
+articulate complex ideas.
+- A few comments noted that Peterson represented Christians in a way that some
+might find favorable.
+
+CRITICISM
+- Many viewers criticized the video for not having a clear representation of a
+Christian, suggesting that a pastor or theologian would have been more
+appropriate.
+- There was dissatisfaction with the debate format, as arguments often seemed
+unresolved or circular.
+- Some felt that the video was more about creating controversy than fostering
+meaningful discussion.
+
+JOKES
+- Several comments made light of Peterson's debating style, particularly his
+focus on definitions.
+- Jokes about the title change and Peterson's ambiguous religious stance were
+common.
+
+CONTROVERSY
+- The setup of the debate was controversial, with accusations that Jubilee set
+Peterson up for failure.
+- The choice of Peterson to represent Christianity sparked debate, as he has not
+explicitly claimed to be a Christian.
+
+OVERALL, the video received mixed reactions, with significant criticism
+regarding the setup and execution of the debate, but also some appreciation for
+Peterson's intellectual approach.
 ```
 
-## Sample output 4
+## Sample output 4 - Yandere Simulator Complete Source Code Analysis - Code Review
 
 ```
 python yt-sum.py
-Enter the YouTube URL: https://www.youtube.com/watch?v=NRZf5or7u4M
+Enter the YouTube URL: https://www.youtube.com/watch?v=LleJbZ3FOPU
 
 Starting metadata and subtitle downloads in parallel...
 
-[youtube] Extracting URL: https://www.youtube.com/watch?v=NRZf5or7u4M
-[youtube] NRZf5or7u4M: Downloading webpage
-[youtube] NRZf5or7u4M: Downloading tv client config
-[youtube] NRZf5or7u4M: Downloading tv player API JSON
-[youtube] NRZf5or7u4M: Downloading ios player API JSON
-[youtube] NRZf5or7u4M: Downloading m3u8 information
-[info] NRZf5or7u4M: Downloading subtitles: en
-[info] NRZf5or7u4M: Downloading 1 format(s): 247+251
-[info] Writing video subtitles to: video_NRZf5or7u4M_72e2a5.en.vtt
-[download] Destination: video_NRZf5or7u4M_72e2a5.en.vtt
-[download] 100% of    8.17KiB in 00:00:00 at 41.34KiB/s
+Extracting cookies from firefox
+Extracted 2503 cookies from firefox
+[youtube] Extracting URL: https://www.youtube.com/watch?v=LleJbZ3FOPU
+[youtube] LleJbZ3FOPU: Downloading webpage
+[youtube] LleJbZ3FOPU: Downloading tv client config
+[youtube] LleJbZ3FOPU: Downloading tv player API JSON
+[info] LleJbZ3FOPU: Downloading subtitles: en
+[info] LleJbZ3FOPU: Downloading 1 format(s): 399+251
+[info] Writing video subtitles to: video_LleJbZ3FOPU_4e55ab.en.vtt
+[download] Destination: video_LleJbZ3FOPU_4e55ab.en.vtt
+[download] 100% of  440.83KiB in 00:00:02 at 217.17KiB/s
 [SubtitlesConvertor] Converting subtitles
-Deleting original file video_NRZf5or7u4M_72e2a5.en.vtt (pass -k to keep)
-Using video title: LOGAN PAUL FOREST VIDEO *DELETED VIDEO*
+Deleting original file video_LleJbZ3FOPU_4e55ab.en.vtt (pass -k to keep)
+Video title: Yandere Simulator Complete Source Code Analysis - Code Review
 
 Summarizing chunk 1/1...
 
+                                CHUNK 1 SUMMARY
+================================================================================
 
-========================================================================================================================
-                                                    Chunk 1 Summary
-========================================================================================================================
 
-**Clickbait Rating: Yes**
+CLICKBAIT RATING: None. The video delivers exactly what the title promises: a
+comprehensive analysis and review of the Yandere Simulator's source code.
 
-This section of the video features a controversial and sensitive moment where the speaker, presumably Logan Paul,
-encounters a distressing scene in a forest. The speaker initially expresses disbelief and shock upon seeing a person
-hanging, which they describe as an unforgettable and life-changing experience. The speaker then reflects on the gravity
-of the situation, stating it's one of the craziest things they've ever encountered. Despite the serious nature of the
-event, the speaker mentions using humor as a coping mechanism, which may come across as inappropriate given the
-circumstances. They acknowledge the sadness of the situation but note their tendency to use humor to manage emotions.
-Additionally, the speaker advises viewers against visiting the location, emphasizing the gravity of the situation. The
-video, due to its handling of a sensitive topic and the way it was presented, has been widely criticized and is
-considered clickbait as it lacks respectful engagement with the subject matter.
+KEY POINTS:
+1. The video provides an in-depth analysis of the Yandere Simulator's source
+code, focusing on performance and architectural issues.
+2. It identifies specific problems with the game's performance, such as
+inefficient rendering and excessive use of public booleans, and suggests
+potential optimizations.
+3. The video discusses architectural concerns, proposing a more structured
+approach to handling game logic and state management.
+
+DETAILED SUMMARY:
+
+INTRODUCTION:
+- The video begins with the creator announcing the long-awaited code review of
+Yandere Simulator, emphasizing the importance of not engaging in bullying.
+- The creator explains the process of obtaining and analyzing the game's source
+code, noting that they have been in communication with the game's developer,
+Yandere Dev, to address some issues.
+
+PERFORMANCE ANALYSIS:
+- The creator uses various tools to benchmark the game's performance, noting
+that the game struggles to maintain 60 FPS despite not fully utilizing CPU or
+GPU resources.
+- They identify rendering as a major bottleneck, with excessive geometry on
+models and inefficient use of shaders contributing to poor performance.
+- The video suggests optimizing assets, implementing proper level of detail
+(LOD) systems, and improving occlusion culling to enhance performance.
+
+ARCHITECTURAL ISSUES:
+- The video critiques the game's architecture, noting that the code is cluttered
+with public booleans and lacks a clear structure for managing game logic.
+- The creator proposes a more object-oriented approach, where each character's
+behavior is managed through a structured routine and state management system.
+- They emphasize the need for refactoring the code to reduce technical debt and
+improve maintainability.
+
+IMPLEMENTATION DETAILS:
+- The video discusses specific implementation details, such as the inefficient
+handling of interaction prompts and the bloated save file format.
+- It suggests using more efficient data structures and caching techniques to
+reduce memory allocation and improve performance.
+- The creator also highlights the potential benefits of using Unity's job system
+for multi-threading and performance optimization.
+
+CONCLUSION:
+- The video concludes by reflecting on the impact of technical debt on the
+game's development, noting that the architecture should have been refactored
+years ago.
+- The creator expresses hope that the analysis will help improve the game's
+development process and encourages viewers to subscribe for more content.
 
 
 Analyzing top comments...
 
-
-========================================================================================================================
-                                                    Comment Analysis
-========================================================================================================================
-
-**Reception Rating: Negative**
-
-The comment section of the video "LOGAN PAUL FOREST VIDEO *DELETED VIDEO*" by 'Ant Resto' reveals a predominantly
-negative reception. Here are the common themes and sentiments:
-
-1. **Criticism of Logan Paul's Actions**: Many comments express outrage and disappointment over Logan Paul's decision to
-film and post a video of a deceased person in a forest. Commenters highlight the disrespectful nature of his actions,
-particularly focusing on his use of the video as clickbait and his inappropriate reactions, such as joking and laughing.
-
-2. **Impact on Viewers**: Several comments mention the negative impact the original video had on viewers, especially
-younger audiences. One commenter recalls being 12 years old and feeling disturbed by the vivid depiction of the body.
-
-3. **Long-lasting Controversy**: Commenters emphasize that this incident marked a significant low point for YouTube and
-express disbelief that Logan Paul and others involved faced little long-term consequences. There is a sense of
-frustration that he continues to have a platform despite this controversy.
-
-4. **Coping Mechanisms and Reactions**: Some comments discuss the possibility that Logan Paul's laughter might have been
-a nervous reaction, though this is generally met with skepticism. The notion of using humor as a coping mechanism is
-mentioned, but many viewers find it an inadequate justification for his behavior.
-
-5. **Continued Distrust**: There is a recurring theme of distrust toward Logan Paul, with viewers expressing concern
-that similar incidents could happen again, either with him or other content creators like Mr. Beast.
-
-6. **Jokes and Sarcasm**: While the overall tone is critical, some comments incorporate sarcasm or dark humor,
-reflecting disbelief at the situation and its aftermath.
-
-Overall, the comment section reflects a strong consensus that the video and Logan Paul's actions were inappropriate,
-highlighting the lasting negative impact on viewers and the YouTube community.
+                                COMMENT ANALYSIS
+================================================================================
 
 
-⏳ Total runtime: 31.92 seconds
+RECEPTION: POSITIVE
+
+COMMON THEMES:
+1. Technical Analysis: Many comments focus on the technical aspects of the
+video, discussing draw calls, shaders, and optimization techniques. There is a
+lot of engagement with the technical content presented in the video.
+2. Educational Value: Viewers appreciate the educational content, with many
+expressing that they learned a lot about programming and game development.
+3. Criticism of Yandere Simulator: There is criticism of the game's code and
+development practices, with some comments humorously pointing out inefficiencies
+or poor coding decisions.
+4. Praise for the Creator: The creator, dyc3, receives significant praise for
+their knowledge, presentation skills, and the quality of the video. Viewers are
+impressed by the editing, visuals, and the depth of analysis.
+5. Working with Yandere Dev: There is curiosity and some skepticism about the
+creator's collaboration with Yandere Dev, with mixed opinions on whether it's
+beneficial or not.
+
+PRAISE:
+- The video is praised for its high educational value, with viewers appreciating
+the deep dive into programming and game development.
+- The creator's editing, presentation, and charisma are highlighted as standout
+features.
+- Many comments express surprise at the creator's relatively low subscriber
+count given the quality of the content.
+
+CRITICISM:
+- Some technical inaccuracies are pointed out, such as the misunderstanding of
+clock cycles and draw calls.
+- There are minor criticisms of the video's structure, transitions, and text
+usage, though these are generally outweighed by positive feedback.
+
+JOKES:
+- Several comments make light-hearted jokes about the inefficiencies in Yandere
+Simulator's code, such as the toothbrush model with excessive polygons.
+- There are humorous remarks about the creator's decision to analyze the code
+despite implied discouragement.
+
+CONTROVERSY:
+- The involvement with Yandere Dev is a point of contention, with some viewers
+questioning the decision to work with him due to his controversial reputation.
+
+OVERALL, the video is well-received, with viewers appreciating both the
+technical insights and the creator's engaging presentation style.
 ```
