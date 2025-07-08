@@ -16,7 +16,7 @@ import tiktoken
 
 def print_wrapped(title, text, width=120):
     divider = "=" * width
-    print(f"\n{divider}\n{title.center(width)}\n{divider}\n")
+    print(f"{title.center(width)}\n{divider}\n\n")
     for line in text.splitlines():
         wrapped = textwrap.fill(line, width=width)
         print(wrapped)
@@ -150,20 +150,20 @@ def summarize_text(text, video_title, channel_name, comments=None):
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the video is a list of things, provide the list. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of none, partial, or yes. None means it is definitely not clickbait, and yes means it's complete clickbait with no value. Provide 1 sentence explaining your decision. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait. If the video takes a long time to discuss something with a simple answer, it is clickbait. Do not use markdown. Use ALL CAPS for headings and subheadings, do not use numbering. You may make use of your external knowledge outside of the video to enhance comprehension of the video as a whole, and point out anything that's incorrect. List the 3 key points of this video."
+                    "content": f"You are a helpful assistant summarizing a YouTube video titled: '{video_title}' by the channel '{channel_name}'. Provide a clear, structured summary of the following section. Mention key events, arguments, or topics. Provide it in a chronological style. If the title of the video is a question with a fairly simple answer, please provide it at the beginning. If it's clickbait please mention this. If it proposes some kind of interesting idea or discusses a concept which is then summarized in the video, please provide that summary. If the video is a list of things, provide the complete list. If the title is vague, please give a less vague version based on the content of the video if possible. If you think the video isn't worth watching or lacks interest, please mention this. At the beginning please provide a clickbait rating of the title compared to the content. Possible ratings are: None, exaggerated, misinformation, clickbait. Provide 1 sentence explaining your decision. If the video is intended to be humorous or satirical, it is not clickbait. If the video pretends to have interesting information but does not, it is clickbait. If the video does what it says in the title, then it's not clickbait. If the video takes a long time to discuss something with a simple answer, it is clickbait. After the clickbait rating, start by listing the 3 key points of the video, and then proceed with the more detailed summary. Do not use markdown. Use ALL CAPS for headings and subheadings, do not use numbering. You may make use of your external knowledge outside of the video to enhance comprehension of the video as a whole, and point out anything that's incorrect."
                 },
                 {
                     "role": "user", 
                     "content": f"Summarize this portion of the subtitles:\n\n{chunk}"
                 }
             ],
-            temperature=0.3,
-            max_tokens=1000
+            temperature=0.25,
+            max_tokens=1100
         )
 
         summary = response.choices[0].message.content
         partial_summaries.append(summary)
-        print_wrapped(f"Chunk {i+1} Summary", summary)
+        print_wrapped(f"CHUNK {i+1} SUMMARY", summary)
 
         if i < len(chunks) - 1:
             cont = input("Continue to next chunk? (y/n): ").strip().lower()
@@ -190,14 +190,14 @@ def summarize_text(text, video_title, channel_name, comments=None):
                     "content": f"Here are the top comments:\n\n{comment_text}"
                 }
             ],
-            temperature=0.3,
-            max_tokens=1000
+            temperature=0.25,
+            max_tokens=600
         )
         comment_analysis = response.choices[0].message.content
-        print_wrapped("Comment Analysis", comment_analysis)
+        print_wrapped("COMMENT ANALYSIS", comment_analysis)
         
     duration = time.time() - start_time
-    print(f"\n⏳ Total runtime: {duration:.2f} seconds\n")
+    # print(f"\n⏳ Total runtime: {duration:.2f} seconds\n")
 
     # ==== Follow-up Q&A ====
     # print_wrapped("Summary", full_summary)
@@ -217,8 +217,8 @@ def summarize_text(text, video_title, channel_name, comments=None):
                 {"role": "user", "content": f"Here is the comment analysis:\n{comment_analysis}"},
                 {"role": "user", "content": f"User question: {question}"}
             ],
-            temperature=0.5,
-            max_tokens=1000
+            temperature=0.4,
+            max_tokens=500
         )
         answer = response.choices[0].message.content
         print_wrapped("Answer", answer)
@@ -261,7 +261,7 @@ if __name__ == "__main__":
     if not srt_file:
         print("No subtitle file found.")
     else:
-        print(f"Using video title: {title}")
+        print(f"Video title: {title}")
         cleaned_text = clean_subtitles(srt_file)
         summarize_text(cleaned_text, title, channel, comments=comments)
 
